@@ -29,7 +29,7 @@ public class DurationToDestinationController {
     String key;
 
     @ApiOperation(value = "Get the Duration from origin to destination", response = String.class)
-    @GetMapping(value = "api/v1/etd")
+    @GetMapping(value = "api/v1/duration")
     public ResponseEntity<DurationToDestinationOut> getEstimatedDeparturesForStation(@RequestParam("orig") String origin,
                                                                    @RequestParam("dest") String destination) throws JsonProcessingException {
         DurationToDestination duration = new RestTemplate().getForObject(durationUrl, DurationToDestination.class, origin, destination, key);

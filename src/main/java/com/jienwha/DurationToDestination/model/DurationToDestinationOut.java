@@ -7,6 +7,7 @@ public class DurationToDestinationOut {
     String origin;
     String destination;
     String tripTime;
+    String eta;
 
     public String getOrigin() {
         return origin;
@@ -30,5 +31,13 @@ public class DurationToDestinationOut {
 
     public void setTripTime(String tripTime) {
         this.tripTime = tripTime;
+    }
+
+    public String getEta() {
+        return eta;
+    }
+
+    public void setEta(String eta) {
+        this.eta = eta;
     }
 }

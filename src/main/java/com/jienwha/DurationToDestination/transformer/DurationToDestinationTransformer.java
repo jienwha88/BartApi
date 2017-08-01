@@ -13,6 +13,7 @@ public class DurationToDestinationTransformer {
         output.setOrigin(input.getRoot().getOrigin());
         output.setDestination(input.getRoot().getDestination());
         output.setTripTime(input.getRoot().getSchedule().getRequest().getTrip().getTripTime());
+        output.setEta(input.getRoot().getSchedule().getRequest().getTrip().getDestTimeMin());
 
         return output;
     }
