@@ -1,5 +1,5 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "special_schedule",
-    "co2_emissions"
+    "@amount",
+    "@class"
 })
-public class Message {
+public class Fare {
 
-    @JsonProperty("special_schedule")
-    private SpecialSchedule specialSchedule;
-    @JsonProperty("co2_emissions")
-    private Co2Emissions co2Emissions;
+    @JsonProperty("@amount")
+    private String amount;
+    @JsonProperty("@class")
+    private String _class;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("special_schedule")
-    public SpecialSchedule getSpecialSchedule() {
-        return specialSchedule;
+    @JsonProperty("@amount")
+    public String getAmount() {
+        return amount;
     }
 
-    @JsonProperty("special_schedule")
-    public void setSpecialSchedule(SpecialSchedule specialSchedule) {
-        this.specialSchedule = specialSchedule;
+    @JsonProperty("@amount")
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
-    @JsonProperty("co2_emissions")
-    public Co2Emissions getCo2Emissions() {
-        return co2Emissions;
+    @JsonProperty("@class")
+    public String getClass_() {
+        return _class;
     }
 
-    @JsonProperty("co2_emissions")
-    public void setCo2Emissions(Co2Emissions co2Emissions) {
-        this.co2Emissions = co2Emissions;
+    @JsonProperty("@class")
+    public void setClass_(String _class) {
+        this._class = _class;
     }
 
     @JsonAnyGetter

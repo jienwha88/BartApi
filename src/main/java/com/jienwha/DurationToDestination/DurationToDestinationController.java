@@ -2,7 +2,9 @@ package com.jienwha.DurationToDestination;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jienwha.DurationToDestination.model.DurationToDestination;
+import com.jienwha.DurationToDestination.model.bart.DurationToDestination;
+import com.jienwha.DurationToDestination.model.DurationToDestinationOut;
+import com.jienwha.DurationToDestination.transformer.DurationToDestinationTransformer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,18 +30,16 @@ public class DurationToDestinationController {
 
     @ApiOperation(value = "Get the Duration from origin to destination", response = String.class)
     @GetMapping(value = "api/v1/etd")
-    public ResponseEntity<String> getEstimatedDeparturesForStation(@RequestParam("orig") String origin,
+    public ResponseEntity<DurationToDestinationOut> getEstimatedDeparturesForStation(@RequestParam("orig") String origin,
                                                                    @RequestParam("dest") String destination) throws JsonProcessingException {
+        DurationToDestination duration = new RestTemplate().getForObject(durationUrl, DurationToDestination.class, origin, destination, key);
 
-//        String url = "http://api.bart.gov/api/sched.aspx?cmd=depart&orig=MONT&dest=DALY&key=MW9S-E7SL-26DU-VV8V&b=0&a=1&json=y";
+        DurationToDestinationOut output = DurationToDestinationTransformer.simplifyOutput(duration);
 
-//        DurationToDestination edt = new RestTemplate().getForObject(url, DurationToDestination.class, station, key);
-        DurationToDestination edt = new RestTemplate().getForObject(durationUrl, DurationToDestination.class, origin, destination, key);
+//        String jsonResponse = new ObjectMapper().writeValueAsString(output);
+//        System.out.println("jsonResponse = " + jsonResponse);
 
-        String jsonResponse = new ObjectMapper().writeValueAsString(edt);
-        System.out.println("jsonResponse = " + jsonResponse);
-
-        return new ResponseEntity<String>(jsonResponse, HttpStatus.OK);
+        return new ResponseEntity<>(output, HttpStatus.OK);
     }
 
 

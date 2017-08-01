@@ -1,5 +1,5 @@
 
-package com.jienwha.EstimatedDepartureTime.model;
+package com.jienwha.EstimatedDepartureTime.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;

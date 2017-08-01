@@ -1,5 +1,5 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "trip"
+    "@version",
+    "@encoding"
 })
-public class Request {
+public class Xml {
 
-    @JsonProperty("trip")
-    private Trip trip;
+    @JsonProperty("@version")
+    private String version;
+    @JsonProperty("@encoding")
+    private String encoding;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("trip")
-    public Trip getTrip() {
-        return trip;
+    @JsonProperty("@version")
+    public String getVersion() {
+        return version;
     }
 
-    @JsonProperty("trip")
-    public void setTrip(Trip trip) {
-        this.trip = trip;
+    @JsonProperty("@version")
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    @JsonProperty("@encoding")
+    public String getEncoding() {
+        return encoding;
+    }
+
+    @JsonProperty("@encoding")
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
     }
 
     @JsonAnyGetter

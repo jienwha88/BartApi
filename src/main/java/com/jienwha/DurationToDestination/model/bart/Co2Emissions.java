@@ -1,8 +1,7 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "@level",
-    "fare"
+    "#cdata-section"
 })
-public class Fares {
+public class Co2Emissions {
 
-    @JsonProperty("@level")
-    private String level;
-    @JsonProperty("fare")
-    private List<Fare> fare = null;
+    @JsonProperty("#cdata-section")
+    private String cdataSection;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("@level")
-    public String getLevel() {
-        return level;
+    @JsonProperty("#cdata-section")
+    public String getCdataSection() {
+        return cdataSection;
     }
 
-    @JsonProperty("@level")
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    @JsonProperty("fare")
-    public List<Fare> getFare() {
-        return fare;
-    }
-
-    @JsonProperty("fare")
-    public void setFare(List<Fare> fare) {
-        this.fare = fare;
+    @JsonProperty("#cdata-section")
+    public void setCdataSection(String cdataSection) {
+        this.cdataSection = cdataSection;
     }
 
     @JsonAnyGetter

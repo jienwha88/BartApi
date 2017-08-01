@@ -1,7 +1,8 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,36 +13,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "@version",
-    "@encoding"
+    "@level",
+    "fare"
 })
-public class Xml {
+public class Fares {
 
-    @JsonProperty("@version")
-    private String version;
-    @JsonProperty("@encoding")
-    private String encoding;
+    @JsonProperty("@level")
+    private String level;
+    @JsonProperty("fare")
+    private List<Fare> fare = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("@version")
-    public String getVersion() {
-        return version;
+    @JsonProperty("@level")
+    public String getLevel() {
+        return level;
     }
 
-    @JsonProperty("@version")
-    public void setVersion(String version) {
-        this.version = version;
+    @JsonProperty("@level")
+    public void setLevel(String level) {
+        this.level = level;
     }
 
-    @JsonProperty("@encoding")
-    public String getEncoding() {
-        return encoding;
+    @JsonProperty("fare")
+    public List<Fare> getFare() {
+        return fare;
     }
 
-    @JsonProperty("@encoding")
-    public void setEncoding(String encoding) {
-        this.encoding = encoding;
+    @JsonProperty("fare")
+    public void setFare(List<Fare> fare) {
+        this.fare = fare;
     }
 
     @JsonAnyGetter

@@ -2,7 +2,9 @@ package com.jienwha.EstimatedDepartureTime;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jienwha.EstimatedDepartureTime.model.EstimatedDepartureTime;
+import com.jienwha.EstimatedDepartureTime.model.bart.EstimatedDepartureTime;
+import com.jienwha.EstimatedDepartureTime.model.bart.Etd;
+import com.jienwha.EstimatedDepartureTime.transformer.EstimatedDepartureTimeTransformer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 
 /**
  * Created by williamwu on 7/31/17.
@@ -30,14 +33,16 @@ public class EstimatedDepartureTimeController {
 
     @ApiOperation(value = "Get the Estimated Time of Departure for the given Station", response = String.class)
     @GetMapping (value = "api/v1/etd/{station}")
-    public ResponseEntity<String> getEstimatedDeparturesForStation(@PathVariable("station") String station) throws JsonProcessingException {
+    public ResponseEntity<List<Etd>> getEstimatedDeparturesForStation(@PathVariable("station") String station) throws JsonProcessingException {
 
-        EstimatedDepartureTime edt = new RestTemplate().getForObject(etdUrl, EstimatedDepartureTime.class, station, key);
+        EstimatedDepartureTime estimatedDepartureTime = new RestTemplate().getForObject(etdUrl, EstimatedDepartureTime.class, station, key);
 
-        String jsonResponse = new ObjectMapper().writeValueAsString(edt);
-        System.out.println("jsonResponse = " + jsonResponse);
+        List<Etd> etdList = EstimatedDepartureTimeTransformer.getEtdList(estimatedDepartureTime);
 
-        return new ResponseEntity<String>(jsonResponse, HttpStatus.OK);
+//        String jsonResponse = new ObjectMapper().writeValueAsString(etdList);
+//        System.out.println("jsonResponse = " + jsonResponse);
+
+        return new ResponseEntity<>(etdList, HttpStatus.OK);
     }
 
 

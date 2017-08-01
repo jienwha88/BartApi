@@ -1,5 +1,5 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "#cdata-section"
+    "trip"
 })
-public class Co2Emissions {
+public class Request {
 
-    @JsonProperty("#cdata-section")
-    private String cdataSection;
+    @JsonProperty("trip")
+    private Trip trip;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("#cdata-section")
-    public String getCdataSection() {
-        return cdataSection;
+    @JsonProperty("trip")
+    public Trip getTrip() {
+        return trip;
     }
 
-    @JsonProperty("#cdata-section")
-    public void setCdataSection(String cdataSection) {
-        this.cdataSection = cdataSection;
+    @JsonProperty("trip")
+    public void setTrip(Trip trip) {
+        this.trip = trip;
     }
 
     @JsonAnyGetter

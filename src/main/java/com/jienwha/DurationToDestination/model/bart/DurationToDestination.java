@@ -1,5 +1,5 @@
 
-package com.jienwha.EstimatedDepartureTime.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "?xml",
     "root"
 })
-public class EstimatedDepartureTime {
+public class DurationToDestination {
 
     @JsonProperty("?xml")
     private Xml xml;

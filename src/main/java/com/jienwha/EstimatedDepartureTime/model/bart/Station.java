@@ -1,7 +1,8 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.EstimatedDepartureTime.model.bart;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,36 +13,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "@amount",
-    "@class"
+    "name",
+    "abbr",
+    "etd"
 })
-public class Fare {
+public class Station {
 
-    @JsonProperty("@amount")
-    private String amount;
-    @JsonProperty("@class")
-    private String _class;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("abbr")
+    private String abbr;
+    @JsonProperty("etd")
+    private List<Etd> etd = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("@amount")
-    public String getAmount() {
-        return amount;
+    @JsonProperty("name")
+    public String getName() {
+        return name;
     }
 
-    @JsonProperty("@amount")
-    public void setAmount(String amount) {
-        this.amount = amount;
+    @JsonProperty("name")
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @JsonProperty("@class")
-    public String getClass_() {
-        return _class;
+    @JsonProperty("abbr")
+    public String getAbbr() {
+        return abbr;
     }
 
-    @JsonProperty("@class")
-    public void setClass_(String _class) {
-        this._class = _class;
+    @JsonProperty("abbr")
+    public void setAbbr(String abbr) {
+        this.abbr = abbr;
+    }
+
+    @JsonProperty("etd")
+    public List<Etd> getEtd() {
+        return etd;
+    }
+
+    @JsonProperty("etd")
+    public void setEtd(List<Etd> etd) {
+        this.etd = etd;
     }
 
     @JsonAnyGetter

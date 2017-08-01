@@ -1,5 +1,5 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "#cdata-section"
 })
-public class SpecialSchedule {
+public class Uri {
 
     @JsonProperty("#cdata-section")
     private String cdataSection;

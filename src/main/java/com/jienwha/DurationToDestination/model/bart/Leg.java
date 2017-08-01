@@ -1,5 +1,5 @@
 
-package com.jienwha.DurationToDestination.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,27 +12,31 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+    "@order",
+    "@transfercode",
     "@origin",
     "@destination",
-    "@fare",
     "@origTimeMin",
     "@origTimeDate",
     "@destTimeMin",
     "@destTimeDate",
-    "@clipper",
-    "@tripTime",
-    "@co2",
-    "fares",
-    "leg"
+    "@line",
+    "@bikeflag",
+    "@trainHeadStation",
+    "@load",
+    "@trainId",
+    "@trainIdx"
 })
-public class Trip {
+public class Leg {
 
+    @JsonProperty("@order")
+    private String order;
+    @JsonProperty("@transfercode")
+    private String transfercode;
     @JsonProperty("@origin")
     private String origin;
     @JsonProperty("@destination")
     private String destination;
-    @JsonProperty("@fare")
-    private String fare;
     @JsonProperty("@origTimeMin")
     private String origTimeMin;
     @JsonProperty("@origTimeDate")
@@ -41,18 +45,40 @@ public class Trip {
     private String destTimeMin;
     @JsonProperty("@destTimeDate")
     private String destTimeDate;
-    @JsonProperty("@clipper")
-    private String clipper;
-    @JsonProperty("@tripTime")
-    private String tripTime;
-    @JsonProperty("@co2")
-    private String co2;
-    @JsonProperty("fares")
-    private Fares fares;
-    @JsonProperty("leg")
-    private Leg leg;
+    @JsonProperty("@line")
+    private String line;
+    @JsonProperty("@bikeflag")
+    private String bikeflag;
+    @JsonProperty("@trainHeadStation")
+    private String trainHeadStation;
+    @JsonProperty("@load")
+    private String load;
+    @JsonProperty("@trainId")
+    private String trainId;
+    @JsonProperty("@trainIdx")
+    private String trainIdx;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("@order")
+    public String getOrder() {
+        return order;
+    }
+
+    @JsonProperty("@order")
+    public void setOrder(String order) {
+        this.order = order;
+    }
+
+    @JsonProperty("@transfercode")
+    public String getTransfercode() {
+        return transfercode;
+    }
+
+    @JsonProperty("@transfercode")
+    public void setTransfercode(String transfercode) {
+        this.transfercode = transfercode;
+    }
 
     @JsonProperty("@origin")
     public String getOrigin() {
@@ -72,16 +98,6 @@ public class Trip {
     @JsonProperty("@destination")
     public void setDestination(String destination) {
         this.destination = destination;
-    }
-
-    @JsonProperty("@fare")
-    public String getFare() {
-        return fare;
-    }
-
-    @JsonProperty("@fare")
-    public void setFare(String fare) {
-        this.fare = fare;
     }
 
     @JsonProperty("@origTimeMin")
@@ -124,54 +140,64 @@ public class Trip {
         this.destTimeDate = destTimeDate;
     }
 
-    @JsonProperty("@clipper")
-    public String getClipper() {
-        return clipper;
+    @JsonProperty("@line")
+    public String getLine() {
+        return line;
     }
 
-    @JsonProperty("@clipper")
-    public void setClipper(String clipper) {
-        this.clipper = clipper;
+    @JsonProperty("@line")
+    public void setLine(String line) {
+        this.line = line;
     }
 
-    @JsonProperty("@tripTime")
-    public String getTripTime() {
-        return tripTime;
+    @JsonProperty("@bikeflag")
+    public String getBikeflag() {
+        return bikeflag;
     }
 
-    @JsonProperty("@tripTime")
-    public void setTripTime(String tripTime) {
-        this.tripTime = tripTime;
+    @JsonProperty("@bikeflag")
+    public void setBikeflag(String bikeflag) {
+        this.bikeflag = bikeflag;
     }
 
-    @JsonProperty("@co2")
-    public String getCo2() {
-        return co2;
+    @JsonProperty("@trainHeadStation")
+    public String getTrainHeadStation() {
+        return trainHeadStation;
     }
 
-    @JsonProperty("@co2")
-    public void setCo2(String co2) {
-        this.co2 = co2;
+    @JsonProperty("@trainHeadStation")
+    public void setTrainHeadStation(String trainHeadStation) {
+        this.trainHeadStation = trainHeadStation;
     }
 
-    @JsonProperty("fares")
-    public Fares getFares() {
-        return fares;
+    @JsonProperty("@load")
+    public String getLoad() {
+        return load;
     }
 
-    @JsonProperty("fares")
-    public void setFares(Fares fares) {
-        this.fares = fares;
+    @JsonProperty("@load")
+    public void setLoad(String load) {
+        this.load = load;
     }
 
-    @JsonProperty("leg")
-    public Leg getLeg() {
-        return leg;
+    @JsonProperty("@trainId")
+    public String getTrainId() {
+        return trainId;
     }
 
-    @JsonProperty("leg")
-    public void setLeg(Leg leg) {
-        this.leg = leg;
+    @JsonProperty("@trainId")
+    public void setTrainId(String trainId) {
+        this.trainId = trainId;
+    }
+
+    @JsonProperty("@trainIdx")
+    public String getTrainIdx() {
+        return trainIdx;
+    }
+
+    @JsonProperty("@trainIdx")
+    public void setTrainIdx(String trainIdx) {
+        this.trainIdx = trainIdx;
     }
 
     @JsonAnyGetter

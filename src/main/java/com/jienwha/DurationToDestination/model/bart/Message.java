@@ -1,8 +1,7 @@
 
-package com.jienwha.EstimatedDepartureTime.model;
+package com.jienwha.DurationToDestination.model.bart;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,49 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "name",
-    "abbr",
-    "etd"
+    "special_schedule",
+    "co2_emissions"
 })
-public class Station {
+public class Message {
 
-    @JsonProperty("name")
-    private String name;
-    @JsonProperty("abbr")
-    private String abbr;
-    @JsonProperty("etd")
-    private List<Etd> etd = null;
+    @JsonProperty("special_schedule")
+    private SpecialSchedule specialSchedule;
+    @JsonProperty("co2_emissions")
+    private Co2Emissions co2Emissions;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
+    @JsonProperty("special_schedule")
+    public SpecialSchedule getSpecialSchedule() {
+        return specialSchedule;
     }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
+    @JsonProperty("special_schedule")
+    public void setSpecialSchedule(SpecialSchedule specialSchedule) {
+        this.specialSchedule = specialSchedule;
     }
 
-    @JsonProperty("abbr")
-    public String getAbbr() {
-        return abbr;
+    @JsonProperty("co2_emissions")
+    public Co2Emissions getCo2Emissions() {
+        return co2Emissions;
     }
 
-    @JsonProperty("abbr")
-    public void setAbbr(String abbr) {
-        this.abbr = abbr;
-    }
-
-    @JsonProperty("etd")
-    public List<Etd> getEtd() {
-        return etd;
-    }
-
-    @JsonProperty("etd")
-    public void setEtd(List<Etd> etd) {
-        this.etd = etd;
+    @JsonProperty("co2_emissions")
+    public void setCo2Emissions(Co2Emissions co2Emissions) {
+        this.co2Emissions = co2Emissions;
     }
 
     @JsonAnyGetter
