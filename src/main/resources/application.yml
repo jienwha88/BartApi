@@ -1,0 +1,7 @@
+bartapi:
+  url:
+    etd: http://api.bart.gov/api/etd.aspx?cmd=etd&orig={station}&key={key}&json=y
+  key: MW9S-E7SL-26DU-VV8V
+#Personal key: QRZB-5XUN-9JWT-DWE9
+
+
